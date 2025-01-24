@@ -1,0 +1,4 @@
+terraform init    # Initialize working directory
+terraform plan    # Preview changes
+terraform apply   # Create resources
+terraform destroy # Clean up resources

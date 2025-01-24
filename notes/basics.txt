@@ -1,0 +1,49 @@
+Terraform basics
+
+Here are the main concepts of Terraform:
+
+- Infrastructure as Code
+- Configuration files
+- Providers
+- Resources
+- Variables
+- Outputs
+- State
+- Modules
+- Workspaces
+- Terraform Cloud
+
+Here if we want to create an EC2 instance, we can use the following code:
+
+```hcl
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "example-instance"
+  }
+}
+```
+
+This is the explanaton of the code:
+
+- The provider block configures the named provider, in this case aws, which is responsible for creating and managing resources.
+
+- The resource block defines a resource that exists within the infrastructure. In this case, the resource is an aws_instance, which represents an EC2 instance.
+
+- The ami and instance_type arguments are parameters for the aws_instance resource. The ami argument specifies the AMI ID to use for the instance, and the instance_type argument specifies the instance type.
+
+- The tags block specifies a set of key-value tags to associate with the instance. In this case, a single tag with the key Name and the value example-instance is defined.
+
+## to run the code, we can use the following commands:
+
+```bash
+terraform init - to initialize the working directory
+terraform plan - to create an execution plan
+terraform apply - to apply the changes
+```

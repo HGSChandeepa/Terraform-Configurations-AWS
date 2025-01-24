@@ -1,0 +1,33 @@
+    API Gateway Setup:
+
+        Creates REST API with endpoints:
+
+            /sms/normal
+
+            /sms/priority
+
+            /email/normal
+
+            /email/priority
+
+        Each endpoint maps to its corresponding SQS queue
+
+        Uses IAM role for secure SQS access
+
+    Message Flow:
+
+        Client sends message to appropriate API endpoint
+
+        API Gateway validates and forwards to correct SQS queue
+
+        Consumer processes messages from queues
+
+        After processing, consumer sends success notification to Processed-Notifications queue
+
+    Webhook Notification:
+
+        Lambda function triggers on new messages in Processed-Notifications queue
+
+        Lambda sends HTTP POST to your webhook URL with message details
+
+        Webhook URL is configurable via var.webhook_url

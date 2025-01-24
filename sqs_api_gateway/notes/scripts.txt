@@ -1,0 +1,9 @@
+    API Gateway receives messages
+
+    Routes to appropriate SQS queue based on message type (via endpoint paths)
+
+    Consumer processes messages
+
+    Success notifications go to a "Processed-Notifications" queue
+
+    Lambda function triggers webhook on processed messages
